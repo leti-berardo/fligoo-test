@@ -13,7 +13,6 @@
 // @ is an alias to /src
 import Search from "@/components/Search.vue";
 import ApiCall from "@/apiClients/api.ts";
-import store from "@/store";
 
 export default {
   name: "Home",
@@ -36,7 +35,7 @@ export default {
     getUsers() {
       this.api.getUsers(this.page).then((response) => {
         let arrayUser = response.data.data;
-        store.commit("SET_USER_LIST", arrayUser);
+        this.$store.commit("SET_USER_LIST", arrayUser);
         this.totalPages = [];
         let totalP = response.data.total / response.data.per_page;
         for (let i = 1; i <= totalP; i++) {
@@ -47,7 +46,7 @@ export default {
   },
   computed: {
     getUsersList() {
-      return store.state.usersList;
+      return this.$store.state.usersList;
     },
   },
   created() {

@@ -18,14 +18,18 @@
         <font-awesome-icon icon="chevron-right" @click="$emit('addPage')" />
       </div>
     </div>
-    <div v-for="user in usersList" :key="user.id" class="w-3/5 mx-auto">
+    <div
+      v-for="user in usersList"
+      :key="user.id"
+      class="w-3/5 mx-auto"
+      @click="goToEditUser(user)"
+    >
       <user-card :user="user" />
     </div>
   </div>
 </template>
 
 <script>
-import store from "@/store";
 import userCard from "./searchComponents/userCard.vue";
 
 export default {
@@ -46,10 +50,16 @@ export default {
   },
   computed: {
     usersList() {
-      return store.state.usersList;
+      return this.$store.state.usersList;
     },
     pageSelectedClass() {
       return ["font-bold", "bg-gray-200", "rounded-full"];
+    },
+  },
+  methods: {
+    goToEditUser(userSelected) {
+      this.$store.commit("SET_USER_SELECTED", userSelected);
+      this.$router.push({ path: "/edit-user" });
     },
   },
 };

@@ -11,7 +11,7 @@
     "
   >
     <div class="flex items-center p-3 w-full">
-      <div class="rounded-full overflow-hidden w-16 w-1/5 relative">
+      <div class="rounded-full overflow-hidden w-1/5 relative">
         <img :src="user.avatar" :alt="`${user.first_name} profile picture`" />
       </div>
       <div class="ml-4 text-left w-3/5">
