@@ -1,28 +1,55 @@
 <template>
   <div>
-    <div v-for="user in usersList" :key="user.id">
-      <div class="flex">
-        <div>
-          <img :src="user.avatar" :alt="`${user.first_name} profile picture`" />
-        </div>
-        <div>
-          <p>{{ `${user.first_name} ${user.last_name}` }}</p>
-          <p>{{ user.email }}</p>
+    <div class="flex justify-center items-center">
+      <div class="mx-3 w-6 h-6 cursor-pointer">
+        <font-awesome-icon icon="chevron-left" @click="$emit('subPage')" />
+      </div>
+      <div class="flex justify-center items-center">
+        <div
+          v-for="(p, i) in totalPages"
+          :key="i"
+          class="flex justify-center items-center text-sm w-6 h-6"
+          :class="page === p ? pageSelectedClass : null"
+        >
+          <p>{{ p }}</p>
         </div>
       </div>
+      <div class="mx-3 w-6 h-6 cursor-pointer">
+        <font-awesome-icon icon="chevron-right" @click="$emit('addPage')" />
+      </div>
+    </div>
+    <div v-for="user in usersList" :key="user.id" class="w-3/5 mx-auto">
+      <user-card :user="user" />
     </div>
   </div>
 </template>
 
 <script>
 import store from "@/store";
+import userCard from "./searchComponents/userCard.vue";
 
 export default {
+  components: { userCard },
   name: "Search",
-  props: {},
+  props: {
+    page: {
+      type: Number,
+      default: 0,
+    },
+    totalPages: {
+      type: Array,
+      default: [],
+    },
+  },
+  componets: {
+    userCard,
+  },
   computed: {
     usersList() {
       return store.state.usersList;
+    },
+    pageSelectedClass() {
+      return ["font-bold", "bg-gray-200", "rounded-full"];
     },
   },
 };
