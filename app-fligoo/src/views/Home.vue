@@ -31,7 +31,7 @@ export default {
   },
   computed:{
     getUsersList(){
-      return store.state.userList
+      return store.state.usersList
     }
   },
   created() {

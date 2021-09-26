@@ -5,11 +5,11 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    userList: [],
+    usersList: [],
   },
   mutations: {
     SET_USER_LIST(state, payload) {
-      state.userList = payload;
+      state.usersList = payload;
     },
   },
   actions: {},
