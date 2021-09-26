@@ -2,14 +2,20 @@
   <div
     class="
       mx-auto
-      w-2/4
+      sm:w-2/4
       p-6
-      border border-solid
+      md:border md:border-solid
       rounded
       shadow-md
       cursor-pointer
     "
   >
+    <div class="mx-3 w-6 h-6 cursor-pointer">
+      <font-awesome-icon
+        icon="chevron-left"
+        @click="$router.push({ path: '/' })"
+      />
+    </div>
     <div>
       <h3 class="font-bold mb-3">Edit user profile</h3>
       <div class="mx-auto rounded-full overflow-hidden w-20">

@@ -21,7 +21,7 @@
     <div
       v-for="user in usersList"
       :key="user.id"
-      class="w-3/5 mx-auto"
+      class="w-full sm:w-4/5 md:w-3/5 mx-auto"
       @click="goToEditUser(user)"
     >
       <user-card :user="user" />
